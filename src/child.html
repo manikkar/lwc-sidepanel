@@ -1,0 +1,29 @@
+<template>
+	<!-- <div class="slds-m-horizontal_xx-small slds-m-bottom_x-small">
+		<slot name="icon"></slot> <span class="slds-p-left_small">{label}</span>
+	</div> -->
+	<div style="position:fixed;">
+		<lightning-button-icon icon-name={icon} variant="brand" alternative-text="Settings" onclick={handlepanel}>
+		</lightning-button-icon>
+		<template if:true={openpanel}>
+			<div class={panelClass} aria-hidden="false">
+				<template if:true={displayHeader}>
+					<div class="slds-panel__header">
+						<h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">{title}</h2>
+						<lightning-button-icon alternative-text="" class="slds-panel__close" icon-name="utility:close" size="small"
+							variant="container" onclick={handleCloseClick}></lightning-button-icon>
+					</div>
+				</template>
+				<template if:true={customHeader}>
+					<div class="slds-panel__header slds-panel__header_custom">
+						<slot name="header"></slot>
+					</div>
+				</template>
+				<div class="slds-panel__body">
+					<slot></slot>
+					<slot name="content"></slot>
+				</div>
+			</div>
+		</template>
+	</div>
+</template>
